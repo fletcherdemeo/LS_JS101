@@ -1,4 +1,5 @@
 {
+  "incorrect_lang": "Must choose 1, 2, or 3",
   "eng": {
     "welcome": "Welcome to Calculator!",
     "first_q": "What's the first number?",
@@ -7,26 +8,26 @@
     "another_q": "Would you like to perform another operation? Type yes or no",
     "result": "The result is: ",
     "incorrect_num": "Hmm... that doesn't look like a valid number.",
-    "incorrect_op": "Must choose 1, 2, 3 or 4"  
+    "incorrect_op": "Must choose 1, 2, 3 or 4"
   },
   "esp": {
-    "welcome": "Welcome to Calculator!",
-    "first_q": "What's the first number?",
-    "second_q": "What's the second number?",
-    "operation_q": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
-    "another_q": "Would you like to perform another operation? Type yes or no",
-    "result": "The result is: ",
-    "incorrect_num": "Hmm... that doesn't look like a valid number.",
-    "incorrect_op": "Must choose 1, 2, 3 or 4"  
+    "welcome": "¡Bienvenido a Calculadora!",
+    "first_q": "¿Cuál es el primer número?",
+    "second_q": "¿Cuál es el segundo número?",
+    "operation_q": "¿Qué operación te gustaría realizar?\n1) Sumar 2) Restar 3) Multiplicar 4) Dividir",
+    "another_q": "¿Le gustaría realizar otra operación? Escriba sí o no",
+    "result": "El resultado es: ",
+    "incorrect_num": "Hmm... eso no parece un número válido.",
+    "incorrect_op": "Debe elegir 1, 2, 3 o 4"  
   },
   "ita": {
-    "welcome": "Welcome to Calculator!",
-    "first_q": "What's the first number?",
-    "second_q": "What's the second number?",
-    "operation_q": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
-    "another_q": "Would you like to perform another operation? Type yes or no",
-    "result": "The result is: ",
-    "incorrect_num": "Hmm... that doesn't look like a valid number.",
-    "incorrect_op": "Must choose 1, 2, 3 or 4"  
+    "welcome": "Benvenuto in Calcolatrice!",
+    "first_q": "Qual è il primo numero?",
+    "second_q": "Qual è il secondo numero?",
+    "operation_q": "Quale operazione vorresti eseguire?\n1) Somma 2) Sottrai 3) Moltiplica 4) Dividi",
+    "another_q": "Vuoi eseguire un'altra operazione? Digita sì o no",
+    "result": "Il risultato è: ",
+    "incorrect_num": "Hmm... non sembra un numero valido.",
+    "incorrect_op": "Devi scegliere 1, 2, 3 o 4"  
   }
 }
