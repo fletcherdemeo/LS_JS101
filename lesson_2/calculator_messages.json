@@ -1,0 +1,32 @@
+{
+  "eng": {
+    "welcome": "Welcome to Calculator!",
+    "first_q": "What's the first number?",
+    "second_q": "What's the second number?",
+    "operation_q": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+    "another_q": "Would you like to perform another operation? Type yes or no",
+    "result": "The result is: ",
+    "incorrect_num": "Hmm... that doesn't look like a valid number.",
+    "incorrect_op": "Must choose 1, 2, 3 or 4"  
+  },
+  "esp": {
+    "welcome": "Welcome to Calculator!",
+    "first_q": "What's the first number?",
+    "second_q": "What's the second number?",
+    "operation_q": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+    "another_q": "Would you like to perform another operation? Type yes or no",
+    "result": "The result is: ",
+    "incorrect_num": "Hmm... that doesn't look like a valid number.",
+    "incorrect_op": "Must choose 1, 2, 3 or 4"  
+  },
+  "ita": {
+    "welcome": "Welcome to Calculator!",
+    "first_q": "What's the first number?",
+    "second_q": "What's the second number?",
+    "operation_q": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+    "another_q": "Would you like to perform another operation? Type yes or no",
+    "result": "The result is: ",
+    "incorrect_num": "Hmm... that doesn't look like a valid number.",
+    "incorrect_op": "Must choose 1, 2, 3 or 4"  
+  }
+}
