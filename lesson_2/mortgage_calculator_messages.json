@@ -1,0 +1,7 @@
+{
+  "loanAmount": "What is the loan amount?",
+  "annualRate": "What is the annual percentage rate (%)?",
+  "loanDuration": "How many years is the loan for?",
+  "validNumber": "Please enter a valid number greater than zero",
+  "monthlyPayment": "Monthly payment: $" 
+}
