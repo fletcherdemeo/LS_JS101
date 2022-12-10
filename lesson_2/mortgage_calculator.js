@@ -5,12 +5,12 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-function invalidNumber(number, noZeros=false) {
-  let test = number.trimStart() === '' || Number.isNaN(Number(number)); 
-  if (noZeros) {
-    return test || Number(number) === 0;
+function invalidNumber(number, mustBePositive = false) {
+  let isNotANumber = number.trimStart() === '' || Number.isNaN(Number(number)); 
+  if (mustBePositive) {
+    return isNotANumber || Number(number) <= 0;
   }
-  return test || Number(number) < 0;
+  return isNotANumber || Number(number) < 0;
 }
 
 // Get loan amount
