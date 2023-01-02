@@ -74,34 +74,34 @@ function factors(number) {
 // number divided by divisor results in a round number or not. Round numbers indicate that
 // the divisor is a factor of the number.
 
-// Question 4
-// Alyssa was asked to write an implementation of a rolling buffer. You can add and remove
-// elements from a rolling buffer. However, once the buffer becomes full, any new elements
-// will displace the oldest elements in the buffer.
+// // Question 4
+// // Alyssa was asked to write an implementation of a rolling buffer. You can add and remove
+// // elements from a rolling buffer. However, once the buffer becomes full, any new elements
+// // will displace the oldest elements in the buffer.
 
-// She wrote two implementations of the code for adding elements to the buffer. In 
-// presenting the code to her team leader, she said "Take your pick. Do you prefer push()
-// or concat() for modifying the buffer?".
+// // She wrote two implementations of the code for adding elements to the buffer. In 
+// // presenting the code to her team leader, she said "Take your pick. Do you prefer push()
+// // or concat() for modifying the buffer?".
 
-// Is there a difference between these implementations, other than the method she used to
-// add an element to the buffer? You may assume that newElement will always be a primitive
-// value.
+// // Is there a difference between these implementations, other than the method she used to
+// // add an element to the buffer? You may assume that newElement will always be a primitive
+// // value.
 
-function addToRollingBuffer1(buffer, maxBufferSize, newElement) {
-  buffer.push(newElement);
-  if (buffer.length > maxBufferSize) {
-    buffer.shift();
-  }
-  return buffer;
-}
+// function addToRollingBuffer1(buffer, maxBufferSize, newElement) {
+//   buffer.push(newElement);
+//   if (buffer.length > maxBufferSize) {
+//     buffer.shift();
+//   }
+//   return buffer;
+// }
 
-function addToRollingBuffer2(buffer, maxBufferSize, newElement) {
-  buffer = buffer.concat(newElement);
-  if (buffer.length > maxBufferSize) {
-    buffer.shift();
-  }
-  return buffer;
-}
+// function addToRollingBuffer2(buffer, maxBufferSize, newElement) {
+//   buffer = buffer.concat(newElement);
+//   if (buffer.length > maxBufferSize) {
+//     buffer.shift();
+//   }
+//   return buffer;
+// }
 
 // Yes there is a difference in these implementations:
 // 1. the push() method mutates the object (array) that it is performing the operation on. 
@@ -118,8 +118,8 @@ function addToRollingBuffer2(buffer, maxBufferSize, newElement) {
 // Question 5
 // What will the following two lines of code output?
 
-console.log(0.3 + 0.6); // 0.9
-console.log(0.3 + 0.6 === 0.9); // true
+// console.log(0.3 + 0.6); // 0.9
+// console.log(0.3 + 0.6 === 0.9); // true
 
 // This actuallys logs:
 // 0.8999999999999999
@@ -127,3 +127,103 @@ console.log(0.3 + 0.6 === 0.9); // true
 
 // Most floating point representations used on computers lack a certain amount
 // of precision, and that can yield unexpected results like these.
+
+// Question 6
+// What do you think the following code will output?
+
+// let nanArray = [NaN];
+
+// console.log(nanArray[0] === NaN);
+
+// This will log false as NaN !== NaN. NaN values can be tested using the
+// Number.isNaN() method which returns a boolean value. The Number.isNan() method
+// is more robust than the global isNaN() method.
+
+// // Question 7
+// // What is the output of the following code?
+
+// let answer = 42;
+
+// function messWithIt(someNumber) {
+//   return (someNumber += 8);
+// }
+
+// let newAnswer = messWithIt(answer);
+
+// console.log(answer - 8);
+
+// // 34 - primitive values can be considered as pass by value (a copy is made in memory)
+// // - thus someNumber and answer do not point to the same object in memory
+
+// // Question 8
+// // One day, Spot was playing with the Munster family's home computer, and he
+// // wrote a small program to mess with their demographic data:
+
+// let munsters = {
+//   Herman: { age: 32, gender: "male" },
+//   Lily: { age: 30, gender: "female" },
+//   Grandpa: { age: 402, gender: "male" },
+//   Eddie: { age: 10, gender: "male" },
+//   Marilyn: { age: 23, gender: "female" }
+// };
+
+// function messWithDemographics(demoObject) {
+//   Object.values(demoObject).forEach(familyMember => {
+//     familyMember["age"] += 42;
+//     familyMember["gender"] = "other";
+//   });
+// }
+
+// // After writing this function, he typed the following code:
+// messWithDemographics(munsters);
+// console.log(munsters);
+
+// // Before Grandpa could stop him, Spot hit the Enter key with his tail. Did the
+// // family's data get ransacked? Why or why not?
+
+// // This code would mutate the data - the Object.values() function returns an array
+// // of the objects elements and is the equivalent of a for.. in loop.  
+
+// // Question 9
+// // Function and method calls can take expressions as arguments. Suppose we define
+// // a function named rps as follows, which follows the classic rules of the 
+// // rock-paper-scissors game, but with a slight twist: in the event of a tie, it
+// // just returns the choice made by both players.
+
+// function rps(fist1, fist2) {
+//   if (fist1 === "rock") {
+//     return fist2 === "paper" ? "paper" : "rock";
+//   } else if (fist1 === "paper") {
+//     return fist2 === "scissors" ? "scissors" : "paper";
+//   } else {
+//     return fist2 === "rock" ? "rock" : "scissors";
+//   }
+// }
+
+// // What does the following code output?
+// console.log(rps(rps(rps("rock", "paper"), rps("rock", "scissors")), "rock"));
+
+// // // 
+// // paper, rock
+// // paper, rock
+// // paper
+
+// Question 10
+// Consider these two simple functions:
+
+function foo(param = "no") {
+  return "yes";
+}
+
+function bar(param = "no") {
+  return param === "no" ? "yes" : "no";
+}
+
+// What will the following function invocation return?
+
+bar(foo());
+
+// return 'no'
+// bar(foo()) is equivalent to bar('yes')
+// bar('yes') will return no
+
