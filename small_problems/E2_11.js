@@ -1,34 +1,18 @@
-// In the previous two exercises, you developed functions that convert
-// simple numeric strings to signed integers. In this exercise and the
-// next, you're going to reverse those functions.
+// Write a function that takes a non-empty string argument and returns the
+// middle character(s) of the string. If the string has an odd length, you
+// should return exactly one character. If the string has an even length,
+// you should return exactly two characters.
 
-// Write a function that converts a non-negative integer value
-// (e.g., 0, 1, 2, 3, and so on) to the string representation of that integer.
-
-// You may not use any of the standard conversion functions available in
-//  JavaScript, such as String(), Number.prototype.toString, or an
-// expression such as '' + number. Your function should do this the
-// old-fashioned way and construct the string by analyzing and manipulating
-// the number.
-
-function integerToString(num) {
-  if (num === 0) {
-    return '0';
+function centerOf(str) {
+  let middle = str.length / 2;
+  if (Number.isInteger(middle)) {
+    return str.slice(middle - 1, middle + 1);
   }
-
-  let arr = [];
-  let mod = 10;
-  let total = num;
-  while (total > 0) {
-    let remainder = ((total % mod) / (mod / 10));
-    arr.unshift(remainder);
-    total -= (total % mod);
-    mod *= 10;
-  }
-  return arr.join('');
+  return str[Math.floor(middle)];
 }
 
-console.log(integerToString(4321));        // "4321"
-console.log(integerToString(0));           // "0"
-console.log(integerToString(5000));        // "5000"
-console.log(integerToString(1234567890));  // "1234567890"
+console.log(centerOf('I Love JavaScript')); // "a"
+console.log(centerOf('Launch School'));     // " "
+console.log(centerOf('Launch'));            // "un"
+console.log(centerOf('Launchschool'));      // "hs"
+console.log(centerOf('x'));                 // "x"

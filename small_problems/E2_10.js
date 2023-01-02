@@ -1,76 +1,21 @@
-// In the previous exercise, you developed a function that converts
-// simple numeric strings to integers. In this exercise, you're going
-// to extend that function to work with signed numbers.
+// Build a program that logs when the user will retire and how many more years
+// the user has to work until retirement.
 
-// Write a function that takes a string of digits and returns the
-// appropriate number as an integer. The string may have a leading
-// + or - sign; if the first character is a +, your function should
-// return a positive number; if it is a -, your function should return
-// a negative number. If there is no sign, return a positive number.
+// Example:
+// What is your age? 30
+// At what age would you like to retire? 70
 
-// You may assume the string will always contain a valid number.
+// It's 2017. You will retire in 2057.
+// You have only 40 years of work to go!
 
-// You may not use any of the standard conversion methods available in
-// JavaScript, such as parseInt() and Number(). You may, however, use
-// the stringToInteger() function from the previous lesson.
+const readline = require('readline-sync');
+const today = new Date();
+const year = today.getFullYear();
 
-function stringToArray(str) {
-  let arr = str.split('');
-  let intArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    switch (arr[i]) {
-      case '1':
-        intArr.push(1);
-        break;
-      case '2':
-        intArr.push(2);
-        break;
-      case '3':
-        intArr.push(3);
-        break;
-      case '4':
-        intArr.push(4);
-        break;
-      case '5':
-        intArr.push(5);
-        break;
-      case '6':
-        intArr.push(6);
-        break;
-      case '7':
-        intArr.push(7);
-        break;
-      case '8':
-        intArr.push(8);
-        break;
-      case '9':
-        intArr.push(9);
-        break;
-      case '0':
-        intArr.push(0);
-        break;
-    }
-  }
-  return intArr;
-}
+console.log('What is your age? ')
+let age = parseInt(readline.prompt());
+console.log('At what age would you like to retire? ')
+let retirementAge = parseInt(readline.prompt());
 
-function stringToInteger(str) {
-  let arr = stringToArray(str);
-  let total = 0;
-  for (let i = 0; i < arr.length; i++) {
-    total += arr[i] * (10 ** (arr.length - (i + 1)));
-  }
-  return total;
-}
-
-function stringToSignedInteger(str) {
-  switch (str[0]) {
-    case '-': return -stringToInteger(str.slice(1));
-    case '+': return stringToInteger(str.slice(1));
-    default: return stringToInteger(str);
-  }
-}
-
-console.log(stringToSignedInteger("4321") === 4321); // logs true
-console.log(stringToSignedInteger("-570") === -570); // logs true
-console.log(stringToSignedInteger("+100") === 100); // logs true
+console.log(`It's ${year}. You will retire in ${year + retirementAge - age}`)
+console.log(`You have only ${retirementAge - age} years of work to go!`)
