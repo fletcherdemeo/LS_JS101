@@ -1,0 +1,51 @@
+Action, Performed On, Side Effect, Return Value, Is Return Value Used?
+
+Example 3
+Method call (map), The outer array, None, "New array ([1, 3])", No
+Callback execution, Each sub-array, None, First element sub-array arr[0], Yes used by map for transformation
+Element access ([0]), Each sub-array, None, Element at index 0 of sub-array, Yes used by console.log
+Method call (console.log), Element at index 0 of each sub-array, Outputs string representation of array element, undefined, No
+Element access ([0]), Each sub-array, None, Element at index 0 of sub-array, Yes used in return statement
+Method call (return), Element at index 0 of each sub-array, Returns value to where it was called, Element at index 0 of sub-array, Yes used as return value of callback
+
+Example 4
+--> 18
+--> 7
+--> 12
+--> undefined
+Method call (forEach), The outer array, None, undefined, Yes in assignment of myArr variable
+Callback execution, Each sub-array, None, Each tranformed sub-array, No
+Method call (map), Each sub-array, None, "New array ([undefined, undefined])", Yes used in return statement for forEach
+Callback execution, Each element of sub-array, None, None, No
+Callback execution, Each element of sub-array if condition met, None, undefined, Yes used in if statement
+
+Example 5
+--> [[2, 4], [6, 8]]
+Method call (map), "Outer array i.e. [[1, 2], [3, 4]]", None, "New array [[2, 4], [6, 8]]", No
+Callback execution, "Each inner array i.e. [1, 2] & [3, 4]", None, "New sub-array [2, 4] & [6, 8]", Yes used in map assignment
+Method call (map), Each inner array, None, "New sub-array [2, 4] & [6, 8]", Yes used in sub-array map assignment
+Callback execution, Each number within sub-array, None, Number multiplied by 2, Yes used in map assignment
+num * 2, num, None, num * 2, Yes used in callback execution
+
+Example 6
+--> [ { c: 'cat', d: 'dog' } ]
+Method call (filter), Outer array, None, New filtered array (shallow copy), No
+Outer callback execution, Each object within outer array, None, Object if it meets filter requirement, Yes used within filter execution
+Method call (keys), Object, None, Array of object keys, Yes used chained by every method call
+Method call (every), Array of keys, None, Boolean value, Yes used in outer callback execution 
+Inner callback execution, Keys in array, None, Boolean value, Yes used in every method call 
+Test object[key][0] === key, Comparison between object value first letter and key, None, Boolean, Yes used in inner callback execution return statement
+If some was used instead of every then we would return a copy of the original array as both objects meet this condition
+
+Example 9
+--> "[[[2, 3], [4, 5]], [6, 7]]"
+Action, Performed On, Side Effect, Return Value, Is Return Value Used?
+Outer method call (map), Outer array, None, "New transformed array [[[2, 3], [4, 5]], [6, 7]]", No
+Outer callback execution, Each inner array within outer array, None, New transformed middle arrays "[[2, 3], [4, 5]]", [6, 7], Yes used in outer map method call
+Middle method call (map), Each inner array within outer array, None, New transformed middle arrays "[[2, 3], [4, 5]]", [6, 7], Yes used returned by outer callback execution
+Middle callback execution, Each element of middle array, None, "New transformed middle array element i.e. [[2, 3], [4, 5]], [6, 7]", Yes used by middle map method call
+typeof elem === 'number', Element of middle array, None, Boolean, Yes used within middle map's if statement
+elem + 1, Element of middle array if number, None, New number i.e. 6 & 7, Yes used in middle callback execution
+Inner method call (map), Element of middle array if array, None, "New array [2, 3] & [4, 5]", Yes used in middle callback execution
+Inner callback execution, Element of middle array if array, None, "New number i.e. 2, 3, 4 & 5", Yes used in inner method call
+number + 1, Element of inner array, None, New number, Yes used in inner callback execution
