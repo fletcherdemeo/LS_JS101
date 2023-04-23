@@ -196,7 +196,7 @@ while (true) {
 
   if (playerTally === 5) {
     prompt("Congratulations you won the match!");
-  } else {
+  } else if (dealer === 5) {
     prompt("Dealer wins the match :(");
   }
 
