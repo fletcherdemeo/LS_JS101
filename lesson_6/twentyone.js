@@ -4,11 +4,16 @@ const CARD_SUITS = ["club", "diamond", "heart", "spade"];
 const YES_NO_OPTIONS = ['y', 'n'];
 const HIT_OR_STAY = ['h', 's'];
 const GAMES_TO_WIN = 5;
-const WHATEVER_ONE = 21;
+const HIGHEST_SCORE = 21;
 const DEALER_HITS_ON = 17;
+const NAMES = {player: "PLAYER", dealer: "DEALER", tie: "TIE"};
 
 function prompt(msg) {
-  console.log(`=> ${msg}`);
+  if (msg) {
+    console.log(`=> ${msg}`);
+  } else {
+    console.log("\n");
+  }
 }
 
 function continueGame(playerTally, dealerTally) {
@@ -34,16 +39,17 @@ function createDeck() {
 function dealCards(deck) {
   let player = [];
   let dealer = [];
+  let deckCopy = deck.slice();
 
   for (let iter = 0; iter < 2; iter += 1) {
     for (let hand of [player, dealer]) {
       let card = "";
-      [card, deck] = issueCard(deck);
+      [card, deckCopy] = issueCard(deckCopy);
       hand.push(card);
     }
   }
 
-  return [player, dealer, deck];
+  return [player, dealer, deckCopy];
 }
 
 function getAnswer(message, options) {
@@ -65,11 +71,12 @@ function getRandomInt(max) {
 }
 
 function issueCard(deck) {
-  let randomIndex = getRandomInt(deck.length);
-  let card = deck[randomIndex];
-  deck.splice(randomIndex, 1);
+  let deckCopy = deck.slice();
+  let randomIndex = getRandomInt(deckCopy.length);
+  let card = deckCopy[randomIndex];
+  deckCopy.splice(randomIndex, 1);
 
-  return [card, deck];
+  return [card, deckCopy];
 }
 
 function sumCards(hand) {
@@ -93,7 +100,7 @@ function sumCards(hand) {
 }
 
 function busted(hand) {
-  return sumCards(hand) > WHATEVER_ONE;
+  return sumCards(hand) > HIGHEST_SCORE;
 }
 
 function displayCards(participant, hand) {
@@ -137,10 +144,10 @@ function dealerTurn(hand, deck) {
 
 function displayWinner(winner) {
   switch (winner) {
-    case "PLAYER":
+    case NAMES.player:
       prompt("Player wins!");
       break;
-    case "DEALER":
+    case NAMES.dealer:
       prompt("Dealer wins!");
       break;
     default:
@@ -154,11 +161,11 @@ function detectWinner(player, dealer) {
 
   let handDiff = playerTotal - dealerTotal;
   if ((handDiff > 0 || busted(dealer)) && !busted(player)) {
-    return "PLAYER";
+    return NAMES.player;
   } else if ((handDiff < 0 || busted(player)) && !busted(dealer)) {
-    return "DEALER";
+    return NAMES.dealer;
   } else {
-    return "TIE";
+    return NAMES.tie;
   }
 }
 
@@ -166,8 +173,8 @@ while (true) {
   let playerTally = 0;
   let dealerTally = 0;
 
+  console.clear();
   while (continueGame(playerTally, dealerTally)) {
-    console.clear();
     prompt(`Score: Player ${playerTally} - Dealer ${dealerTally}`);
     let deck = createDeck();
 
@@ -184,26 +191,22 @@ while (true) {
     }
     let winner = detectWinner(player, dealer);
     displayWinner(winner);
-    if (winner === "PLAYER") playerTally += 1;
-    if (winner === "DEALER") dealerTally += 1;
+    if (winner === NAMES.player) playerTally += 1;
+    if (winner === NAMES.dealer) dealerTally += 1;
 
-    if (continueGame(playerTally, dealerTally)) {
-      let rematch = getAnswer('Would you like to continue? (y or n)', YES_NO_OPTIONS);
-      if (rematch === 'n') break;
-    }
-    continue;
+    prompt();
   }
 
-  if (playerTally === 5) {
+  if (playerTally === GAMES_TO_WIN) {
     prompt("Congratulations you won the match!");
-  } else if (dealerTally === 5) {
+  } else if (dealerTally === GAMES_TO_WIN) {
     prompt("Dealer wins the match :(");
   }
 
   let rematch = getAnswer('Would you like a rematch? (y or n)', YES_NO_OPTIONS);
   if (rematch === 'y') continue;
   if (rematch === 'n') {
-    prompt(`Thanks for playing ${WHATEVER_ONE}!`);
+    prompt(`Thanks for playing ${HIGHEST_SCORE}!`);
     break;
   }
 }
