@@ -90,3 +90,5 @@ while (continueGame) {
   }
   if (answer[0] !== 'y') continueGame = false;
 }
+
+// test
